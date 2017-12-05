@@ -87,6 +87,7 @@ public class Solution {
         // check command line arguments
         if (args.length < 1) {
             System.out.println("Need one parameter (for instance jobs.txt)");
+            return;
         }
 
         // open file
@@ -126,7 +127,7 @@ public class Solution {
             totalWct += node.wct(accumulatedLength);
             StringBuilder sb = new StringBuilder(node.toString());
             sb.append(" // ").append(String.format("%.0f", totalWct));
-            System.out.println(sb.toString());
+//            System.out.println(sb.toString());
             count--;
         }
 
@@ -141,7 +142,7 @@ public class Solution {
             totalWct += node.wct(accumulatedLength);
             StringBuilder sb = new StringBuilder(node.toString());
             sb.append(" // ").append(String.format("%.0f", totalWct));
-            System.out.println(sb.toString());
+//            System.out.println(sb.toString());
             count--;
         }
 
