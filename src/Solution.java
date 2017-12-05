@@ -26,7 +26,7 @@ public class Solution {
             return length;
         }
 
-        public int wct(int accumulatedLength) {
+        public long wct(long accumulatedLength) {
             return weight * (length + accumulatedLength);
         }
 
@@ -117,37 +117,37 @@ public class Solution {
         in.close();
 
         Node node;
-        double totalWct = 0;
-        int accumulatedLength = 0;
+        long totalWct = 0;
+        long accumulatedLength = 0;
         // pool items from priority queue and accumulate total weighted
         // completion time
-        int count = 10000;
-        while (((node = pqS.poll()) != null) && (count != 0)) {
-            accumulatedLength += node.getLength();
+//        int count = 10000;
+        while (((node = pqS.poll()) != null) /*&& (count != 0)*/) {
             totalWct += node.wct(accumulatedLength);
-            StringBuilder sb = new StringBuilder(node.toString());
-            sb.append(" // ").append(String.format("%.0f", totalWct));
+            accumulatedLength += node.getLength();
+//            StringBuilder sb = new StringBuilder(node.toString());
+//            sb.append(" // ").append(String.format("%.0f", totalWct));
 //            System.out.println(sb.toString());
-            count--;
+//            count--;
         }
 
         System.out.println(
-                "The total sum of weighted completion time is: " + String.format("%.0f", totalWct));
+                "The total sum of weighted completion time is (Difference method): " + totalWct);
 
         totalWct = 0;
         accumulatedLength = 0;
-        count = 10000;
-        while (((node = pqR.poll()) != null) && (count != 0)) {
-            accumulatedLength += node.getLength();
+//        count = 10000;
+        while (((node = pqR.poll()) != null) /*&& (count != 0)*/) {
             totalWct += node.wct(accumulatedLength);
-            StringBuilder sb = new StringBuilder(node.toString());
-            sb.append(" // ").append(String.format("%.0f", totalWct));
+            accumulatedLength += node.getLength();
+//            StringBuilder sb = new StringBuilder(node.toString());
+//            sb.append(" // ").append(String.format("%.0f", totalWct));
 //            System.out.println(sb.toString());
-            count--;
+//            count--;
         }
 
         System.out.println(
-                "The total sum of weighted completion time is: " + String.format("%.0f", totalWct));
+                "The total sum of weighted completion time is (Ratio method): " + totalWct);
 
     }
 
